@@ -16,7 +16,7 @@ class BoardController extends Controller
     {
         $boards = board::with('no','title','uid','created_at')->latest()->paginate(10);
 
-        return view('board.index', compact('boards'));
+        return view('board.index', compact('board'));
     }
 
     /**

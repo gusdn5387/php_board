@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-    <table border="1">
+    <!-- <table border="1">
         @forelse($boards as $board)
         <tr>
             <td>{{$board->no}}</td>
@@ -14,5 +14,5 @@
             <td><p class="text-center text-danger">{{ trans('errors.not_found_description') }}</p></td>
         </tr>
         @endforelse
-    </table>
+    </table> -->
 @stop

@@ -10,16 +10,18 @@ class board extends Model
     protected $fillable = [
         'no',
         'uid',
+        'user_id',
         'title',
         'content'
     ];
 
     protected $hidden = [
         'no',
+        'user_id',
         'uid'
     ];
 
-    public function user() {
+    public function users() {
         return $this->belongsTo(User::class);
     }
 }
