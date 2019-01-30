@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
+});
+
+Route::get('/home', function () {
+    return view('home');
 });
 
 //회원가입 페이지
@@ -25,7 +29,7 @@ Route::post('auth/login', 'Auth\LoginController@login');
 Route::get('auth/logout', 'Auth\LoginController@logout');
 
 //로그아웃
-Route::get('/logout', 'userinfoController@logout');
+Route::get('auth/logout', 'Auth\LoginController@logout');
 
 //글 목록 페이지
 Route::get('/list', 'boardController@list');

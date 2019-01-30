@@ -10,9 +10,9 @@ class boardController extends Controller
     public function list() {
         return view('board.list');
     }
- 
+    
     //글 정보 페이지
-     public function info() {
+        public function info() {
         return view('board.boardinfo');
     }
 
