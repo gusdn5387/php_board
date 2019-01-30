@@ -16,36 +16,22 @@ Route::get('/', function () {
 });
 
 //회원가입 페이지
-Route::get('/join', function () {
-    return view('user.join');
-});
+Route::get('/join', 'userinfoController@join');
 
 //로그인 페이지
-Route::get('/login', function () {
-    return view('user.login');
-});
+Route::get('/login', 'userinfoController@login');
 
 //로그아웃
-Route::get('/logout', function () {
-    return view('user.logout');
-});
+Route::get('/logout', 'userinfoController@logout');
 
 //글 목록 페이지
-Route::get('/list', function () {
-    return view('board.list');
-});
+Route::get('/list', 'boardController@list');
 
 //글 작성 페이지
-Route::get('/write', function () {
-    return view('board.write');
-});
+Route::get('/write', 'boardController@write');
 
 //글 수정 페이지
-Route::get('/update', function () {
-    return view('board.update');
-});
+Route::get('/update', 'boardController@update');
 
 //글 삭제
-Route::get('/delete', function () {
-    return view('board.delete');
-});
+Route::get('/delete', 'boardController@delete');
