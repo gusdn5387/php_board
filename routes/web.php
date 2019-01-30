@@ -16,10 +16,13 @@ Route::get('/', function () {
 });
 
 //회원가입 페이지
-Route::get('/join', 'userinfoController@join');
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('auth/register', 'Auth\RegisterController@register');
 
 //로그인 페이지
-Route::get('/login', 'userinfoController@login');
+Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('auth/login', 'Auth\LoginController@login');
+Route::get('auth/logout', 'Auth\LoginController@logout');
 
 //로그아웃
 Route::get('/logout', 'userinfoController@logout');
