@@ -27,6 +27,9 @@ Route::get('/logout', 'userinfoController@logout');
 //글 목록 페이지
 Route::get('/list', 'boardController@list');
 
+//글 정보 페이지
+Route::get('/info', 'boardController@info');
+
 //글 작성 페이지
 Route::get('/write', 'boardController@write');
 
