@@ -14,9 +14,9 @@ class BoardController extends Controller
      */
     public function index()
     {
-        $boards = board::with('no','title','uid','created_at')->latest()->paginate(10);
+        $boards = board::with('id','title','uid','created_at')->latest()->paginate(10);
 
-        return view('board.index', compact('board'));
+        return view('board.index', compact('boards'));
     }
 
     /**
@@ -26,7 +26,9 @@ class BoardController extends Controller
      */
     public function create()
     {
-        //
+        $board = new board;
+
+        return view('board.create', compact('board'));
     }
 
     /**
@@ -35,9 +37,12 @@ class BoardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BoardRequest $request)
     {
-        //
+        $board = board::create($request->all());
+        flash()->success('<script>alert("글 작성 완료")</script>');
+
+        return redirect(route('board.index'));
     }
 
     /**
@@ -48,7 +53,9 @@ class BoardController extends Controller
      */
     public function show($id)
     {
-        //
+        $board = board::with('id','uid','title','content','created_at')->findOrFail($id);
+        
+        return view('board.show', compact('board'));
     }
 
     /**
@@ -59,7 +66,9 @@ class BoardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $board = board::findOrFail($id);
+
+        return view('board.edit', compact('article'));
     }
 
     /**
@@ -69,9 +78,13 @@ class BoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BooardRequest $request, $id)
     {
-        //
+        $board = Board::findOrFail($id);
+        $board->update($request->except('_token', '_method'));
+        flash()->success('<script>alert("글 수정 완료")</script>');
+        
+        return redirect(route('board.index'));
     }
 
     /**
@@ -82,6 +95,9 @@ class BoardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        board::findOrFail($id)->delete();
+        flash()->success('<script>alert("글 삭제 완료")</script>');
+
+        return redirect(route('board.index'));
     }
 }

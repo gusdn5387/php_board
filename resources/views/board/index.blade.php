@@ -15,4 +15,5 @@
         </tr>
         @endforelse
     </table> -->
+    <input type="button" onclick='location.href="/board/create"' value="작성"/>
 @stop

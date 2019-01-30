@@ -14,7 +14,7 @@ class CreateBoardsTable extends Migration
     public function up()
     {
         Schema::create('boards', function (Blueprint $table) {
-            $table->increments('no');
+            $table->increments('id');
             $table->string('uid');
             $table->string('user_id');
             $table->string('title');

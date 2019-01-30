@@ -1,13 +1,13 @@
 @extends('master')
 
 @section('content')
-    <form action="{{route('board.store')}}" method="post">
+    <form action="{{route('board.update', $board->id)}}" method="post">
     {!! csrf_field() !!}
-        <input type="hidden" name="uid" value="{{old('name')}}"/>
+    {!! method_field('PUT') !!}
         <table>
             <tr>
                 <td>제목</td>
-                <td><input type="text" name="title" style="width:100%"></td>
+                <td><input type="text" name="title" value="{{ old('title', $board->title) }}" style="width:100%"></td>
             </tr>
             <tr>
                 <td></td>
@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <td>내용</td>
-                <td><textarea rows="8" cols="30" name="content"></textarea></td>
+                <td><textarea rows="8" cols="30" name="content">{{ old('content', $board->content) }}</textarea></td>
             </tr> 
             <tr>
                 <td></td>

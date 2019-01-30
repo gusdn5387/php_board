@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class board extends Model
 {
     protected $fillable = [
-        'no',
+        'id',
         'uid',
         'user_id',
         'title',
@@ -16,7 +16,7 @@ class board extends Model
     ];
 
     protected $hidden = [
-        'no',
+        'id',
         'user_id',
         'uid'
     ];
