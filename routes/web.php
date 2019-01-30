@@ -31,17 +31,5 @@ Route::get('auth/logout', 'Auth\LoginController@logout');
 //로그아웃
 Route::get('auth/logout', 'Auth\LoginController@logout');
 
-//글 목록 페이지
-Route::get('/list', 'boardController@list');
-
-//글 정보 페이지
-Route::get('/info', 'boardController@info');
-
-//글 작성 페이지
-Route::get('/write', 'boardController@write');
-
-//글 수정 페이지
-Route::get('/update', 'boardController@update');
-
-//글 삭제
-Route::get('/delete', 'boardController@delete');
+//게시판
+Route::resource('board', 'BoardController');
