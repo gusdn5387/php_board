@@ -30,6 +30,6 @@ class User extends Authenticatable
     ];
 
     public function boards() {
-        return $this->hasMany(board::class);
+        return $this->hasMany('App\board', 'email');
     }
 }

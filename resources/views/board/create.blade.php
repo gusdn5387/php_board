@@ -1,9 +1,8 @@
 @extends('master')
 
 @section('content')
-    <form action="{{route('board.store')}}" method="post">
+    <form action="/board/store" method="post">
     {!! csrf_field() !!}
-        <input type="hidden" name="uid" value="{{old('name')}}"/>
         <table>
             <tr>
                 <td>제목</td>

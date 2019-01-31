@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\board;
+use App\Http\Requests\BoardRequest;
 
 class BoardController extends Controller
 {
@@ -14,7 +15,7 @@ class BoardController extends Controller
      */
     public function index()
     {
-        $boards = board::with('id','title','uid','created_at')->latest()->paginate(10);
+        $boards = board::with('user_id','title','uid','created_at')->latest()->paginate(10);
 
         return view('board.index', compact('boards'));
     }
@@ -27,7 +28,7 @@ class BoardController extends Controller
     public function create()
     {
         $board = new board;
-
+        
         return view('board.create', compact('board'));
     }
 
@@ -39,8 +40,9 @@ class BoardController extends Controller
      */
     public function store(BoardRequest $request)
     {
+        var_dump($request);
         $board = board::create($request->all());
-        flash()->success('<script>alert("글 작성 완료")</script>');
+        flash()->success(trans('board.index'));
 
         return redirect(route('board.index'));
     }
@@ -53,7 +55,7 @@ class BoardController extends Controller
      */
     public function show($id)
     {
-        $board = board::with('id','uid','title','content','created_at')->findOrFail($id);
+        $board = board::with('user_id','uid','title','content','created_at')->findOrFail($id);
         
         return view('board.show', compact('board'));
     }
